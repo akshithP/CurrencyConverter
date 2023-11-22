@@ -1,6 +1,7 @@
 # Currency Converter
 
 This is a simple Currency Converter web app. This lightweight and user-friendly tool allows you to effortlessly convert currencies with just a few clicks.
+![Home Page Currency Converter](https://github.com/akshithP/CurrencyConverter/assets/72608430/547daf54-c3b9-4cde-b0ba-98d402115093)
 
 
 ## Features:
