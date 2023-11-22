@@ -7,7 +7,7 @@ This is a simple Currency Converter web app. This lightweight and user-friendly 
 
     Easy-to-Use Interface: The intuitive interface makes currency conversion a breeze for users of all levels.
     Real-Time Exchange Rates: Stay up-to-date with the latest exchange rates, ensuring accurate and timely conversions.
-    Wide Currency Support: Convert between a variety of currencies, including major global currencies and popular cryptocurrencies.
+    Wide Currency Support: Convert between a variety of currencies.
 
 ## How to Use:
 
