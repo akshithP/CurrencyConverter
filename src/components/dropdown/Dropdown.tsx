@@ -1,13 +1,26 @@
 import React from "react";
 import styles from "./dropdown.module.css";
 
-const Dropdown = () => {
+// Type of the props
+type SortedCurrenciesType = Record<string, string>;
+interface DropdownProps {
+  bgColor: string; // A string
+  sortedCurrencies: SortedCurrenciesType;
+}
+
+const Dropdown = ({ bgColor, sortedCurrencies }: DropdownProps) => {
   return (
     <section>
-      <select className={styles.selectionMenu} name="currencies">
-        <option value="AUD - Dollars">AUD - Dollars </option>
-        <option value="INR - Rupees">INR - Rupees </option>
-        <option value="USD - Dollars">USD - Dollars </option>
+      <select
+        className={styles.selectionMenu}
+        style={{ backgroundColor: bgColor }}
+        name="currencies"
+      >
+        {Object.entries(sortedCurrencies).map(([currCode, currName]) => (
+          <option key={currCode} value={currCode}>
+            {currCode} - {currName}
+          </option>
+        ))}
       </select>
     </section>
   );

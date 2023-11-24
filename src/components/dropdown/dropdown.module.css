@@ -1,4 +1,10 @@
 .selectionMenu {
     border: none;
-    width: 120px;
+    width: 160px;
+    color: #ffb703;
+    font-size: 20px;
+}
+
+.selectionMenu:hover {
+    cursor: pointer;
 }
