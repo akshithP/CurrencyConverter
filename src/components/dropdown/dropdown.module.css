@@ -1,10 +1,12 @@
+.form {
+  border: none;
+  width: 380px;
+}
+
 .selectionMenu {
-    border: none;
-    width: 160px;
-    color: #ffb703;
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .selectionMenu:hover {
-    cursor: pointer;
+  cursor: pointer;
 }

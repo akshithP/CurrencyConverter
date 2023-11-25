@@ -8,12 +8,13 @@ import getCurrencies from "@/api/getCurrencies";
 const poppins = Poppins({ subsets: ["latin"], weight: "500" });
 
 export default async function Home() {
-
   const currencies = await getCurrencies();
   const currencyArray = Object.entries(currencies);
-  const sortedCurrencyArray = currencyArray.sort((a, b) => a[0].localeCompare(b[0]));
+  const sortedCurrencyArray = currencyArray.sort((a, b) =>
+    a[0].localeCompare(b[0])
+  );
   const sortedCurrencies = Object.fromEntries(sortedCurrencyArray);
-  console.log(sortedCurrencies)
+  console.log(sortedCurrencies);
 
   return (
     <div className={styles.mainContainer}>
@@ -23,11 +24,14 @@ export default async function Home() {
         </h1>
       </div>
       <div className={styles.fromMenu}>
-        <Dropdown bgColor="#023047" sortedCurrencies={sortedCurrencies}></Dropdown>
+        <Dropdown
+          fontColor="#ffb703"
+          sortedCurrencies={sortedCurrencies}
+        ></Dropdown>
       </div>
-      <div>
+      {/* <div className={styles.fromInputBox}>
         <Inputbox></Inputbox>
-      </div>
+      </div> */}
     </div>
   );
 }
