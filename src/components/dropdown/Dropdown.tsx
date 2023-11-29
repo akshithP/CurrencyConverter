@@ -1,21 +1,78 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./dropdown.module.css";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { SelectChangeEvent } from "@mui/material/Select";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import { ThemeProvider } from "@emotion/react";
+import { createTheme } from "@mui/material";
+
+// Type of the items in the array
+type Currency = {
+  code: string;
+  desc: string;
+};
 
 // Type of the props
-type SortedCurrenciesType = Record<string, string>;
 interface DropdownProps {
   fontColor: string; // A string
-  sortedCurrencies: SortedCurrenciesType;
+  sortedCurrencies: Currency[]; // Array of the available currencies
 }
 
 const Dropdown = ({ fontColor, sortedCurrencies }: DropdownProps) => {
+  // Creating custom styles for the autoplete MUI components
+  const theme = createTheme({
+    components: {
+      // Changing the color of the dropwdown icon
+      MuiSvgIcon: {
+        styleOverrides: {
+          root: {
+            color: fontColor,
+          },
+        },
+      },
+      MuiInput: {
+        styleOverrides: {
+          root: {
+            color: fontColor,
+            fontSize: 20,
+          },
+        },
+      },
+      MuiInputLabel: {
+        styleOverrides: {
+          root: {
+            color: "#ACB3BA",
+            fontSize: 16,
+          },
+        },
+      },
+      MuiAutocomplete: {
+        defaultProps: {
+          slotProps: {
+            paper: {
+              elevation: 6,
+            },
+          },
+        },
+        styleOverrides: {
+          option: {
+            borderBottom: "1px solid #4B5056",
+            backgroundColor: fontColor,
+            fontSize: "18px",
+          },
+        },
+      },
+    },
+  });
+
   // State for the selected currencies in the dropdown
   const [selectedCurr, setSelectedCurr] = useState("");
+  const defaultProps = {
+    options: sortedCurrencies,
+    getOptionLabel: (option: Currency) => `${option.code} - ${option.desc}`,
+  };
 
   // Handle change
   const handleChange = (event: SelectChangeEvent) => {
@@ -23,66 +80,22 @@ const Dropdown = ({ fontColor, sortedCurrencies }: DropdownProps) => {
   };
 
   return (
-    <section>
-      <FormControl
-        className={styles.form}
-        variant="standard"
-        sx={{ m: 1, minWidth: 120 }}
-      >
-        <InputLabel
-          id="demo-simple-select-standard-label"
-          sx={{
-            color: "#ACB3BA",
-            ".MuiOutlinedInput-notchedOutline": {
-              borderColor: "#ACB3BA",
-            },
-            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#ACB3BA",
-            },
-            "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#ACB3BA",
-            },
-            ".MuiSvgIcon-root ": {
-              fill: "white !important",
-            },
-          }}
-        >
-          From
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
-          value={selectedCurr}
-          onChange={handleChange}
-          label="Age"
-          className={styles.selectionMenu}
-          sx={{
-            color: fontColor,
-            "& .MuiSelect-icon": {
-              color: fontColor, // Change the color of the dropdown arrow
-              fontSize: "40px",
-            },
-          }}
-        >
-          {Object.entries(sortedCurrencies).map(([currCode, currName]) => (
-            <MenuItem key={currCode} value={`${currCode} - ${currName}`}>
-              {currCode} - {currName}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      {/* <select
-        className={styles.selectionMenu}
-        style={{ backgroundColor: bgColor }}
-        name="currencies"
-      >
-        {Object.entries(sortedCurrencies).map(([currCode, currName]) => (
-          <option key={currCode} value={currCode}>
-            {currCode} - {currName}
-          </option>
-        ))}
-      </select> */}
-    </section>
+    <ThemeProvider theme={theme}>
+      <section className={styles.mainContainer}>
+        <Stack spacing={2} sx={{ margin: "auto" }} width="250px">
+          <Autocomplete
+            {...defaultProps}
+            className={styles.autocomplete}
+            id="disable-close-on-select"
+            disableCloseOnSelect
+            renderInput={(params) => (
+              <TextField {...params} label="From" variant="standard" />
+            )}
+            autoSelect={true}
+          />
+        </Stack>
+      </section>
+    </ThemeProvider>
   );
 };
 

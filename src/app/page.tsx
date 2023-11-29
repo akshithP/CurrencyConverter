@@ -14,7 +14,14 @@ export default async function Home() {
     a[0].localeCompare(b[0])
   );
   const sortedCurrencies = Object.fromEntries(sortedCurrencyArray);
-  console.log(sortedCurrencies);
+  const convertedArray = Object.entries(sortedCurrencies).map(
+    ([code, desc]) => ({
+      code,
+      desc,
+    })
+  );
+
+  console.log(convertedArray);
 
   return (
     <div className={styles.mainContainer}>
@@ -26,12 +33,12 @@ export default async function Home() {
       <div className={styles.fromMenu}>
         <Dropdown
           fontColor="#ffb703"
-          sortedCurrencies={sortedCurrencies}
+          sortedCurrencies={convertedArray}
         ></Dropdown>
       </div>
-      {/* <div className={styles.fromInputBox}>
+      <div className={styles.fromInputBox}>
         <Inputbox></Inputbox>
-      </div> */}
+      </div>
     </div>
   );
 }

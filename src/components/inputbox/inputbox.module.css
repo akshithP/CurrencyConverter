@@ -1,4 +1,5 @@
-.inputBox{
-    border: none;
+.inputBox {
+  border: none;
+  width: 40vh;
+  height: 20vh;
 }
-

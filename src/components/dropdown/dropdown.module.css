@@ -1,12 +1,5 @@
-.form {
-  border: none;
-  width: 380px;
+.autocomplete{
+  font-size: 200px;
 }
 
-.selectionMenu {
-  font-size: 20px;
-}
 
-.selectionMenu:hover {
-  cursor: pointer;
-}

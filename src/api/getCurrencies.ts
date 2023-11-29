@@ -18,4 +18,6 @@ const getCurrencies = async () => {
   }
 };
 
+
+
 export default getCurrencies;

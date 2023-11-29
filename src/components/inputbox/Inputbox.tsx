@@ -1,8 +1,8 @@
 import React from "react";
-import "./inputbox.module.css"
+import styles from "./inputbox.module.css";
 
 const Inputbox = () => {
-  return <input className="inputBox" type="number"></input>;
+  return <input className={styles.inputbox} type="number"></input>;
 };
 
 export default Inputbox;
