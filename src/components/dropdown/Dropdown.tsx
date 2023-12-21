@@ -17,11 +17,17 @@ type Currency = {
 // Type of the props
 interface DropdownProps {
   fontColor: string; // A string
+  menuLabel: string; // A string to represent if the dropdown is from or to
   sortedCurrencies: Currency[]; // Array of the available currencies
 }
 
-const Dropdown = ({ fontColor, sortedCurrencies }: DropdownProps) => {
+const Dropdown = ({
+  fontColor,
+  menuLabel,
+  sortedCurrencies,
+}: DropdownProps) => {
   // Creating custom styles for the autoplete MUI components
+  console.log(menuLabel)
   const theme = createTheme({
     components: {
       // Changing the color of the dropwdown icon
@@ -68,15 +74,9 @@ const Dropdown = ({ fontColor, sortedCurrencies }: DropdownProps) => {
   });
 
   // State for the selected currencies in the dropdown
-  const [selectedCurr, setSelectedCurr] = useState("");
   const defaultProps = {
     options: sortedCurrencies,
     getOptionLabel: (option: Currency) => `${option.code} - ${option.desc}`,
-  };
-
-  // Handle change
-  const handleChange = (event: SelectChangeEvent) => {
-    setSelectedCurr(event.target.value);
   };
 
   return (
@@ -89,7 +89,7 @@ const Dropdown = ({ fontColor, sortedCurrencies }: DropdownProps) => {
             id="disable-close-on-select"
             disableCloseOnSelect
             renderInput={(params) => (
-              <TextField {...params} label="From" variant="standard" />
+              <TextField {...params} label={menuLabel} variant="standard" />
             )}
             autoSelect={true}
           />

@@ -33,11 +33,12 @@ export default async function Home() {
       <div className={styles.fromMenu}>
         <Dropdown
           fontColor="#ffb703"
+          menuLabel="From"
           sortedCurrencies={convertedArray}
         ></Dropdown>
       </div>
       <div className={styles.fromInputBox}>
-        <Inputbox></Inputbox>
+        <Inputbox fontColor="#ffb703"></Inputbox>
       </div>
     </div>
   );
