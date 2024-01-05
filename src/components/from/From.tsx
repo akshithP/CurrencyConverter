@@ -6,18 +6,10 @@ import Inputbox from "../inputbox/Inputbox";
 import styles from "./from.module.css";
 
 interface FromProps {
-  fontColor: string; // A string
-  invFontColor: string; // A string
-  menuLabel: string; // A string to represent if the dropdown is from or to
   sortedCurrencies: Currency[]; // Array of the available currencies
 }
 
-const From = ({
-  fontColor,
-  invFontColor,
-  menuLabel,
-  sortedCurrencies,
-}: FromProps) => {
+const From = ({ sortedCurrencies }: FromProps) => {
   // useState to for the selected state and the input's current value
   const [selectedCurr, setSelectedCurr] = React.useState<Currency | null>({
     code: "AUD",

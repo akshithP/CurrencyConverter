@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Dropdown from "@/components/dropdown/Dropdown";
-import Inputbox from "@/components/inputbox/Inputbox";
+import From from "@/components/from/From";
+import To from "@/components/to/To";
 import { Poppins } from "next/font/google";
 import styles from "./page.module.css";
 import getCurrencies from "@/api/getCurrencies";
@@ -28,32 +28,8 @@ export default async function Home() {
           Currency Converter
         </h1>
       </div>
-      <section className={styles.fromContainer}>
-        <div className={styles.fromMenu}>
-          <Dropdown
-            fontColor="#ffb703"
-            invFontColor="#023047"
-            menuLabel="From"
-            sortedCurrencies={convertedArray}
-          ></Dropdown>
-        </div>
-        <div className={styles.fromInputBox}>
-          <Inputbox fontColor="#ffb703"></Inputbox>
-        </div>
-      </section>
-      <section className={styles.toContainer}>
-        <div className={styles.toMenu}>
-          <Dropdown
-            fontColor="#023047"
-            invFontColor="#ffb703"
-            menuLabel="To"
-            sortedCurrencies={convertedArray}
-          ></Dropdown>
-        </div>
-        <div className={styles.fromInputBox}>
-          <Inputbox fontColor="#023047"></Inputbox>
-        </div>
-      </section>
+      <From sortedCurrencies={convertedArray}></From>
+      <To sortedCurrencies={convertedArray}></To>
     </div>
   );
 }
