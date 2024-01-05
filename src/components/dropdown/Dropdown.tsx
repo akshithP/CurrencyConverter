@@ -1,33 +1,32 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./dropdown.module.css";
-import { SelectChangeEvent } from "@mui/material/Select";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
-
-// Type of the items in the array
-type Currency = {
-  code: string;
-  desc: string;
-};
+import { Currency } from "@/types";
 
 // Type of the props
 interface DropdownProps {
   fontColor: string; // A string
+  invFontColor: string; // A string representing inverses of the font color
   menuLabel: string; // A string to represent if the dropdown is from or to
   sortedCurrencies: Currency[]; // Array of the available currencies
+  selectedCurrency: any;
+  onCurrencyChange: any;
 }
 
 const Dropdown = ({
   fontColor,
+  invFontColor,
   menuLabel,
   sortedCurrencies,
+  selectedCurrency,
+  onCurrencyChange,
 }: DropdownProps) => {
   // Creating custom styles for the autoplete MUI components
-  console.log(menuLabel)
   const theme = createTheme({
     components: {
       // Changing the color of the dropwdown icon
@@ -38,6 +37,7 @@ const Dropdown = ({
           },
         },
       },
+      // This is the text in the dropdwon menu
       MuiInput: {
         styleOverrides: {
           root: {
@@ -49,7 +49,7 @@ const Dropdown = ({
       MuiInputLabel: {
         styleOverrides: {
           root: {
-            color: "#ACB3BA",
+            color: "#8a8a8a",
             fontSize: 16,
           },
         },
@@ -67,6 +67,7 @@ const Dropdown = ({
             borderBottom: "1px solid #4B5056",
             backgroundColor: fontColor,
             fontSize: "18px",
+            color: invFontColor,
           },
         },
       },
@@ -79,6 +80,12 @@ const Dropdown = ({
     getOptionLabel: (option: Currency) => `${option.code} - ${option.desc}`,
   };
 
+  // // UseState to
+  // const [selectedCurr, setSelectedCurr] = React.useState<Currency | null>({
+  //   code: "AUD",
+  //   desc: "Australian Dollar",
+  // });
+
   return (
     <ThemeProvider theme={theme}>
       <section className={styles.mainContainer}>
@@ -87,6 +94,11 @@ const Dropdown = ({
             {...defaultProps}
             className={styles.autocomplete}
             id="disable-close-on-select"
+            value={selectedCurrency}
+            onChange={(event: any, newCurr: Currency | null) => {
+              // setSelectedCurr(newCurr);
+              onCurrencyChange(newCurr)
+            }}
             disableCloseOnSelect
             renderInput={(params) => (
               <TextField {...params} label={menuLabel} variant="standard" />

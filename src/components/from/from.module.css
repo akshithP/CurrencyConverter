@@ -1,0 +1,12 @@
+.fromContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fromMenu {
+  background-color: #023047;
+  width: 100vh;
+}
+

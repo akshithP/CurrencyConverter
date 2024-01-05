@@ -1,4 +1,4 @@
-import Image from "next/image";
+import React, { useState } from "react";
 import Dropdown from "@/components/dropdown/Dropdown";
 import Inputbox from "@/components/inputbox/Inputbox";
 import { Poppins } from "next/font/google";
@@ -17,11 +17,9 @@ export default async function Home() {
   const convertedArray = Object.entries(sortedCurrencies).map(
     ([code, desc]) => ({
       code,
-      desc,
+      desc: String(desc), //explicitly specifying the type of desc from unknown to string
     })
   );
-
-  console.log(convertedArray);
 
   return (
     <div className={styles.mainContainer}>
@@ -30,16 +28,32 @@ export default async function Home() {
           Currency Converter
         </h1>
       </div>
-      <div className={styles.fromMenu}>
-        <Dropdown
-          fontColor="#ffb703"
-          menuLabel="From"
-          sortedCurrencies={convertedArray}
-        ></Dropdown>
-      </div>
-      <div className={styles.fromInputBox}>
-        <Inputbox fontColor="#ffb703"></Inputbox>
-      </div>
+      <section className={styles.fromContainer}>
+        <div className={styles.fromMenu}>
+          <Dropdown
+            fontColor="#ffb703"
+            invFontColor="#023047"
+            menuLabel="From"
+            sortedCurrencies={convertedArray}
+          ></Dropdown>
+        </div>
+        <div className={styles.fromInputBox}>
+          <Inputbox fontColor="#ffb703"></Inputbox>
+        </div>
+      </section>
+      <section className={styles.toContainer}>
+        <div className={styles.toMenu}>
+          <Dropdown
+            fontColor="#023047"
+            invFontColor="#ffb703"
+            menuLabel="To"
+            sortedCurrencies={convertedArray}
+          ></Dropdown>
+        </div>
+        <div className={styles.fromInputBox}>
+          <Inputbox fontColor="#023047"></Inputbox>
+        </div>
+      </section>
     </div>
   );
 }

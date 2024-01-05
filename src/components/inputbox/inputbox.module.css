@@ -1,13 +1,15 @@
 .inputDiv {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .inputBox {
-  border: none;
   background-color: transparent;
+  border-radius: 10px;
+  padding: 20px;
   font-size: 80px;
   flex: 1;
   text-align: center;
@@ -15,4 +17,20 @@
 
 .inputBox:focus {
   outline: none;
+}
+
+.clearButton {
+  background-color: transparent;
+  border: none;
+  font-size: 80px;
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.clearButton:hover{
+  background-color: red;
 }

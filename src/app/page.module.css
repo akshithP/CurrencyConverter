@@ -6,11 +6,32 @@
   gap: 20px;
 }
 
+.fromContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.toContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 54%;
+}
+
 .title {
   color: #ffb703;
 }
 
 .fromMenu {
   background-color: #023047;
+  width: 100vh;
+}
+
+.toMenu {
+  background-color: #ffb703;
   width: 100vh;
 }
