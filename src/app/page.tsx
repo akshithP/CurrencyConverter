@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import From from "@/components/from/From";
-import To from "@/components/to/To";
+import React from "react";
+import Main from "@/components/main/main";
 import { Poppins } from "next/font/google";
 import styles from "./page.module.css";
 import getCurrencies from "@/api/getCurrencies";
+import convertCurrencies from "@/api/convertCurrencies";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "500" });
 
@@ -28,8 +28,7 @@ export default async function Home() {
           Currency Converter
         </h1>
       </div>
-      <From sortedCurrencies={convertedArray}></From>
-      <To sortedCurrencies={convertedArray}></To>
+      <Main sortedCurrencies={convertedArray}></Main>
     </div>
   );
 }

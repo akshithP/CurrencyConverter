@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./inputbox.module.css";
 interface InputProps {
   fontColor: string; // A string, to customise the color, so component is reusable.
@@ -8,13 +8,18 @@ interface InputProps {
 }
 
 const Inputbox = ({ fontColor, inputAmount, setInputAmount }: InputProps) => {
+  const [fromAmount, setFromAmount] = useState<number | string>("");
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputAmount(event.target.value);
-    console.log(inputAmount);
+    setFromAmount(event.target.value);
   };
 
   const handleClearClick = () => {
     setInputAmount("");
+  };
+
+  const handleSubmit = () => {
+    setInputAmount(fromAmount);
   };
 
   return (
@@ -24,10 +29,11 @@ const Inputbox = ({ fontColor, inputAmount, setInputAmount }: InputProps) => {
         className={styles.inputBox}
         style={{ color: fontColor, border: "solid 1px" }}
         type="number"
-        value={inputAmount}
+        value={fromAmount}
         onChange={handleInputChange}
       />
-      {inputAmount && (
+      <button onClick={handleSubmit}>Submit</button>
+      {/* {inputAmount && (
         <button
           className={styles.clearButton}
           style={{ color: fontColor }}
@@ -35,7 +41,7 @@ const Inputbox = ({ fontColor, inputAmount, setInputAmount }: InputProps) => {
         >
           x
         </button>
-      )}
+      )} */}
     </div>
   );
 };

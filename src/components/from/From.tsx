@@ -6,17 +6,20 @@ import Inputbox from "../inputbox/Inputbox";
 import styles from "./from.module.css";
 
 interface FromProps {
+  selectedCurr: any;
+  setSelectedCurr: any;
+  inputAmount: any;
+  setInputAmount: any;
   sortedCurrencies: Currency[]; // Array of the available currencies
 }
 
-const From = ({ sortedCurrencies }: FromProps) => {
-  // useState to for the selected state and the input's current value
-  const [selectedCurr, setSelectedCurr] = React.useState<Currency | null>({
-    code: "AUD",
-    desc: "Australian Dollar",
-  });
-  const [inputAmount, setInputAmount] = useState<number | string>("");
-
+const From = ({
+  selectedCurr,
+  setSelectedCurr,
+  inputAmount,
+  setInputAmount,
+  sortedCurrencies,
+}: FromProps) => {
   return (
     <section className={styles.fromContainer}>
       <div className={styles.fromMenu}>

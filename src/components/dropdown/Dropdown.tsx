@@ -98,6 +98,7 @@ const Dropdown = ({
             onChange={(event: any, newCurr: Currency | null) => {
               // setSelectedCurr(newCurr);
               onCurrencyChange(newCurr)
+              console.log(newCurr)
             }}
             disableCloseOnSelect
             renderInput={(params) => (
