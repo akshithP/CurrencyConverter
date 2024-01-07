@@ -15,7 +15,7 @@ const convertCurrencies = async ({
   const options: RequestInit = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "0e44672082msh03a40182f751cf6p17fa5cjsn5351e23bcdcc",
+      "X-RapidAPI-Key": process.env.API_KEY,
       "X-RapidAPI-Host": "currency-converter5.p.rapidapi.com",
     } as HeadersInit,
   };

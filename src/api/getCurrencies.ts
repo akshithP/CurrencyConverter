@@ -1,5 +1,4 @@
 const getCurrencies = async () => {
-  console.log(process.env.API_KEY)
   // Get requests using the fetch funtion
   const url = "https://currency-converter5.p.rapidapi.com/currency/list";
   const options: RequestInit = {
@@ -18,7 +17,5 @@ const getCurrencies = async () => {
     console.log(err);
   }
 };
-
-
 
 export default getCurrencies;

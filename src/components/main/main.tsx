@@ -40,18 +40,13 @@ const Main = ({ sortedCurrencies }: MainProps) => {
 
         console.log(data);
         setResult(data);
-        setToAmount(data['rates'][toCurr['code']]['rate_for_amount'])
+        setToAmount(data["rates"][toCurr["code"]]["rate_for_amount"]);
         return data;
       };
       // Call the function
       const result = fetchConvertion();
-      
     }
   }, [fromCurr, fromAmount, toCurr]);
-
-  if (results) {
-    console.log(results['rates'][toCurr['code']]['rate_for_amount']);
-  }
 
   return (
     <>
