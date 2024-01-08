@@ -3,7 +3,6 @@ import Main from "@/components/main/main";
 import { Poppins } from "next/font/google";
 import styles from "./page.module.css";
 import getCurrencies from "@/api/getCurrencies";
-import convertCurrencies from "@/api/convertCurrencies";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "500" });
 
@@ -20,6 +19,13 @@ export default async function Home() {
       desc: String(desc), //explicitly specifying the type of desc from unknown to string
     })
   );
+
+  // DELAY THE RENDER, TO TEST THE LOADING UI
+  // function timeout(delay: number) {
+  //   return new Promise((res) => setTimeout(res, delay));
+  // }
+
+  // await timeout(1000);
 
   return (
     <div className={styles.mainContainer}>

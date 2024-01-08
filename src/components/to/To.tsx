@@ -2,9 +2,7 @@
 import React from "react";
 import { Currency } from "@/types";
 import Dropdown from "../dropdown/Dropdown";
-import Inputbox from "../inputbox/Inputbox";
 import styles from "./to.module.css";
-import { blue } from "@mui/material/colors";
 
 interface ToProps {
   selectedCurr: any;
@@ -33,13 +31,10 @@ const To = ({
           onCurrencyChange={setSelectedCurr}
         ></Dropdown>
       </div>
-      <div className={styles.fromInputBox}>
-        <p
-          style={{ backgroundColor: "red", color: "#023047", fontSize: "60px" }}
-        >
-          {inputAmount}
-        </p>
-      </div>
+      <p className={styles.resultBox}>{inputAmount}</p>
+      {/* <div className={styles.fromInputBox}>
+        
+      </div> */}
     </section>
   );
 };

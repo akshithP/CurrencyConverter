@@ -11,3 +11,13 @@
   background-color: #ffb703;
   width: 100vh;
 }
+
+.resultBox {
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 80px;
+  flex: 1;
+  text-align: center;
+  color: #023047;
+}

@@ -4,13 +4,13 @@ import { Currency } from "@/types";
 import From from "../from/From";
 import To from "../to/To";
 import convertCurrencies from "@/api/convertCurrencies";
-import { Console } from "console";
 
 interface MainProps {
   sortedCurrencies: Currency[]; // Array of the available currencies
 }
 
 const Main = ({ sortedCurrencies }: MainProps) => {
+  const [loading, setLoading] = useState(false);
   // useState to for the selected state and the input's current value
   const [fromCurr, setFromCurr] = React.useState<Currency | null>({
     code: "AUD",
@@ -18,13 +18,14 @@ const Main = ({ sortedCurrencies }: MainProps) => {
   });
   const [fromAmount, setFromAmount] = useState<number | string>("");
 
-  // To currency
+  // Hold the values for selected To currency and set the result
   const [toCurr, setToCurr] = React.useState<Currency | null>({
     code: "USD",
     desc: "United States dollar",
   });
   const [toAmount, setToAmount] = useState<number | string>("");
 
+  // Set the result from the API
   const [results, setResult] = useState<any>();
 
   //Use the useEffect to fetch the new data
@@ -32,15 +33,16 @@ const Main = ({ sortedCurrencies }: MainProps) => {
     // Convert the currency
     if (fromCurr && toCurr && fromAmount) {
       const fetchConvertion = async () => {
+        setLoading(!loading);
         const data = await convertCurrencies({
           fromCode: fromCurr?.code,
           toCode: toCurr?.code,
           amount: fromAmount,
         });
 
-        console.log(data);
         setResult(data);
         setToAmount(data["rates"][toCurr["code"]]["rate_for_amount"]);
+        setLoading(!loading);
         return data;
       };
       // Call the function

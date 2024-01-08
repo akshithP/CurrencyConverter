@@ -1,6 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./inputbox.module.css";
+import { FaArrowRight } from "react-icons/fa6";
+import { IoIosClose } from "react-icons/io";
+import { MdClear } from "react-icons/md";
+
 interface InputProps {
   fontColor: string; // A string, to customise the color, so component is reusable.
   inputAmount: any;
@@ -15,7 +19,7 @@ const Inputbox = ({ fontColor, inputAmount, setInputAmount }: InputProps) => {
   };
 
   const handleClearClick = () => {
-    setInputAmount("");
+    setFromAmount("");
   };
 
   const handleSubmit = () => {
@@ -27,21 +31,32 @@ const Inputbox = ({ fontColor, inputAmount, setInputAmount }: InputProps) => {
       <input
         placeholder="Type amount here..."
         className={styles.inputBox}
-        style={{ color: fontColor, border: "solid 1px" }}
         type="number"
         value={fromAmount}
         onChange={handleInputChange}
       />
-      <button onClick={handleSubmit}>Submit</button>
-      {/* {inputAmount && (
-        <button
-          className={styles.clearButton}
-          style={{ color: fontColor }}
-          onClick={handleClearClick}
-        >
-          x
-        </button>
-      )} */}
+      <button
+        className={styles.clearButton}
+        style={{
+          color: fontColor,
+          visibility: fromAmount ? "visible" : "hidden",
+        }}
+        onClick={handleClearClick}
+      >
+        <MdClear size="5em" />
+      </button>
+      <p
+        style={{
+          color: "#7A838C",
+          fontSize: "50px",
+          visibility: fromAmount ? "visible" : "hidden",
+        }}
+      >
+        |
+      </p>
+      <button className={styles.submitBtn} onClick={handleSubmit}>
+        <FaArrowRight size="4em" />
+      </button>
     </div>
   );
 };

@@ -4,33 +4,66 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  border: 1px solid #ffb703;
+  border-radius: 10px;
 }
 
 .inputBox {
   background-color: transparent;
-  border-radius: 10px;
+  border: none;
   padding: 20px;
   font-size: 80px;
   flex: 1;
   text-align: center;
+  color: #ffb703;
 }
 
 .inputBox:focus {
   outline: none;
 }
 
+/*------------------- CLEAR BUTTON & ICON -------------------*/
 .clearButton {
   background-color: transparent;
   border: none;
-  font-size: 80px;
-  position: absolute;
-  top: 50%;
-  right: 5px;
-  transform: translateY(-50%);
-  padding: 5px 10px;
-  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
 }
 
-.clearButton:hover{
-  background-color: red;
+.clearButton svg {
+  transition: color 0.2s ease;
+  color: #d02d2d;
+}
+
+.clearButton:hover {
+  background-color: #d02d2d;
+}
+
+.clearButton:hover svg {
+  color: white;
+}
+
+.clearButton:active {
+  transform: translateY(4px);
+}
+
+.clearButton:hover,
+.clearButton:focus {
+  box-shadow: inset 0 0 0 2em var(--hover);
+}
+
+/*------------------- SUBMIT BUTTON & ICON -------------------*/
+.submitBtn {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+}
+
+.submitBtn svg {
+  transition: color 0.2s ease;
+  color: #ffb703;
+}
+
+.submitBtn:hover svg {
+  color: white;
 }
