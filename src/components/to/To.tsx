@@ -32,9 +32,6 @@ const To = ({
         ></Dropdown>
       </div>
       <p className={styles.resultBox}>{inputAmount}</p>
-      {/* <div className={styles.fromInputBox}>
-        
-      </div> */}
     </section>
   );
 };

@@ -4,6 +4,7 @@ import { Currency } from "@/types";
 import From from "../from/From";
 import To from "../to/To";
 import convertCurrencies from "@/api/convertCurrencies";
+import Swap from "../swap/swap";
 
 interface MainProps {
   sortedCurrencies: Currency[]; // Array of the available currencies
@@ -59,6 +60,12 @@ const Main = ({ sortedCurrencies }: MainProps) => {
         setInputAmount={setFromAmount}
         sortedCurrencies={sortedCurrencies}
       ></From>
+      <Swap
+        fromCurr={fromCurr}
+        setFromCurr={setFromCurr}
+        toCurr={toCurr}
+        setToCurr={setToCurr}
+      ></Swap>
       <To
         selectedCurr={toCurr}
         setSelectedCurr={setToCurr}
