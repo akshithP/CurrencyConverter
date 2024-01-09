@@ -12,10 +12,20 @@ interface InputProps {
 }
 
 const Inputbox = ({ fontColor, inputAmount, setInputAmount }: InputProps) => {
-  const [fromAmount, setFromAmount] = useState<number | string>("");
+  const [fromAmount, setFromAmount] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFromAmount(event.target.value);
+    // sET THE NEW UPDATED INPUT VALUE CONMPRISING OF THE COMMAS
+    let value = event.target.value;
+    value = value.replace(/[^0-9.]+/g, "");
+
+    // Convert the cleaned value to a number and format it with commas
+    const formattedValue = value
+      ? parseInt(value.split(",").join("")).toLocaleString()
+      : "";
+    setFromAmount(formattedValue);
+
+    //setFromAmount(event.target.value);
   };
 
   const handleClearClick = () => {
@@ -23,7 +33,9 @@ const Inputbox = ({ fontColor, inputAmount, setInputAmount }: InputProps) => {
   };
 
   const handleSubmit = () => {
-    setInputAmount(fromAmount);
+    const numericValue = parseFloat(fromAmount.replace(/,/g, ''));
+    setInputAmount(numericValue);
+    //setInputAmount(fromAmount);
   };
 
   return (
@@ -31,7 +43,7 @@ const Inputbox = ({ fontColor, inputAmount, setInputAmount }: InputProps) => {
       <input
         placeholder="Type amount here..."
         className={styles.inputBox}
-        type="number"
+        type="text"
         value={fromAmount}
         onChange={handleInputChange}
       />

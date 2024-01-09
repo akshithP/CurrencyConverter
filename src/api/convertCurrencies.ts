@@ -21,6 +21,11 @@ const convertCurrencies = async ({
   };
 
   try {
+    function timeout(delay: number) {
+      return new Promise((res) => setTimeout(res, delay));
+    }
+
+    await timeout(1000);
     const response = await fetch(url, options);
     const result = await response.json();
     console.log(result);

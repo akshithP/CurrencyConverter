@@ -10,6 +10,8 @@ interface ToProps {
   inputAmount: any;
   setInputAmount: any;
   sortedCurrencies: Currency[]; // Array of the available currencies
+  loading: boolean;
+  setLoading(value: boolean): void;
 }
 
 const To = ({
@@ -18,6 +20,8 @@ const To = ({
   inputAmount,
   setInputAmount,
   sortedCurrencies,
+  loading,
+  setLoading,
 }: ToProps) => {
   return (
     <section className={styles.toContainer}>
@@ -31,7 +35,11 @@ const To = ({
           onCurrencyChange={setSelectedCurr}
         ></Dropdown>
       </div>
-      <p className={styles.resultBox}>{inputAmount}</p>
+      {loading ? (
+        <p className={styles.loader}></p>
+      ) : (
+        <p className={styles.resultBox}>{inputAmount}</p>
+      )}
     </section>
   );
 };

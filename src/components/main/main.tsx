@@ -4,7 +4,7 @@ import { Currency } from "@/types";
 import From from "../from/From";
 import To from "../to/To";
 import convertCurrencies from "@/api/convertCurrencies";
-import Swap from "../swap/swap";
+import Swap from "../swap/Swap";
 
 interface MainProps {
   sortedCurrencies: Currency[]; // Array of the available currencies
@@ -34,7 +34,7 @@ const Main = ({ sortedCurrencies }: MainProps) => {
     // Convert the currency
     if (fromCurr && toCurr && fromAmount) {
       const fetchConvertion = async () => {
-        setLoading(!loading);
+        setLoading(true);
         const data = await convertCurrencies({
           fromCode: fromCurr?.code,
           toCode: toCurr?.code,
@@ -44,6 +44,7 @@ const Main = ({ sortedCurrencies }: MainProps) => {
         setResult(data);
         setToAmount(data["rates"][toCurr["code"]]["rate_for_amount"]);
         setLoading(!loading);
+        setLoading(false);
         return data;
       };
       // Call the function
@@ -72,6 +73,8 @@ const Main = ({ sortedCurrencies }: MainProps) => {
         inputAmount={toAmount}
         setInputAmount={setToAmount}
         sortedCurrencies={sortedCurrencies}
+        loading={loading}
+        setLoading={setLoading}
       ></To>
     </>
   );

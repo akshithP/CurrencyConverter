@@ -16,6 +16,7 @@
   flex: 1;
   text-align: center;
   color: #ffb703;
+  font-family: 'Abel', sans-serif;
 }
 
 .inputBox:focus {
@@ -65,5 +66,5 @@
 }
 
 .submitBtn:hover svg {
-  color: white;
+  color: rgb(0, 0, 0);
 }

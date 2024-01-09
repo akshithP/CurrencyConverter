@@ -20,13 +20,6 @@ export default async function Home() {
     })
   );
 
-  // DELAY THE RENDER, TO TEST THE LOADING UI
-  // function timeout(delay: number) {
-  //   return new Promise((res) => setTimeout(res, delay));
-  // }
-
-  // await timeout(1000);
-
   return (
     <div className={styles.mainContainer}>
       <div className={styles.titleContainer}>
