@@ -2,9 +2,13 @@
 import React, { useState } from "react";
 import styles from "./inputbox.module.css";
 import { FaArrowRight } from "react-icons/fa6";
-import { IoIosClose } from "react-icons/io";
 import { MdClear } from "react-icons/md";
+import { Abel } from "next/font/google";
 
+const abel = Abel({
+  weight: "400",
+  subsets: ["latin"],
+});
 interface InputProps {
   fontColor: string; // A string, to customise the color, so component is reusable.
   inputAmount: any;
@@ -12,20 +16,10 @@ interface InputProps {
 }
 
 const Inputbox = ({ fontColor, inputAmount, setInputAmount }: InputProps) => {
-  const [fromAmount, setFromAmount] = useState<string>("");
+  const [fromAmount, setFromAmount] = useState<number | string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // sET THE NEW UPDATED INPUT VALUE CONMPRISING OF THE COMMAS
-    let value = event.target.value;
-    value = value.replace(/[^0-9.]+/g, "");
-
-    // Convert the cleaned value to a number and format it with commas
-    const formattedValue = value
-      ? parseInt(value.split(",").join("")).toLocaleString()
-      : "";
-    setFromAmount(formattedValue);
-
-    //setFromAmount(event.target.value);
+    setFromAmount(event.target.value);
   };
 
   const handleClearClick = () => {
@@ -33,17 +27,15 @@ const Inputbox = ({ fontColor, inputAmount, setInputAmount }: InputProps) => {
   };
 
   const handleSubmit = () => {
-    const numericValue = parseFloat(fromAmount.replace(/,/g, ''));
-    setInputAmount(numericValue);
-    //setInputAmount(fromAmount);
+    setInputAmount(fromAmount);
   };
 
   return (
     <div className={styles.inputDiv}>
       <input
         placeholder="Type amount here..."
-        className={styles.inputBox}
-        type="text"
+        className={`${styles.inputBox} ${abel.className}`}
+        type="number"
         value={fromAmount}
         onChange={handleInputChange}
       />

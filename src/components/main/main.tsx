@@ -24,7 +24,7 @@ const Main = ({ sortedCurrencies }: MainProps) => {
     code: "USD",
     desc: "United States dollar",
   });
-  const [toAmount, setToAmount] = useState<number | string>("");
+  const [toAmount, setToAmount] = useState<number>();
 
   // Set the result from the API
   const [results, setResult] = useState<any>();
@@ -42,8 +42,9 @@ const Main = ({ sortedCurrencies }: MainProps) => {
         });
 
         setResult(data);
-        setToAmount(data["rates"][toCurr["code"]]["rate_for_amount"]);
-        setLoading(!loading);
+        //setToAmount(data["rates"][toCurr["code"]]["rate_for_amount"]);
+        let convertedAmount = data["rates"][toCurr["code"]]["rate_for_amount"];
+        setToAmount(((convertedAmount * 100) | 0) / 100);
         setLoading(false);
         return data;
       };

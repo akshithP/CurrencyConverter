@@ -3,6 +3,12 @@ import React from "react";
 import { Currency } from "@/types";
 import Dropdown from "../dropdown/Dropdown";
 import styles from "./to.module.css";
+import { Abel } from "next/font/google";
+
+const abel = Abel({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 interface ToProps {
   selectedCurr: any;
@@ -38,7 +44,7 @@ const To = ({
       {loading ? (
         <p className={styles.loader}></p>
       ) : (
-        <p className={styles.resultBox}>{inputAmount}</p>
+        <p className={`${styles.resultBox} ${abel.className}`}>{inputAmount}</p>
       )}
     </section>
   );
