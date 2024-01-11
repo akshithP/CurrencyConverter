@@ -56,7 +56,7 @@ const Main = ({ sortedCurrencies }: MainProps) => {
   }, [fromCurr, fromAmount, toCurr]);
 
   return (
-    <Grid container alignItems="center" justifyContent="center">
+    <Grid container spacing={5} alignItems="center" justifyContent="center">
       <Grid item xs={12}>
         <From
           selectedCurr={fromCurr}
