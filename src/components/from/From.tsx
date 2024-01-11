@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Currency } from "@/types";
 import Dropdown from "../dropdown/Dropdown";
 import Inputbox from "../inputbox/Inputbox";
-import styles from "./from.module.css";
+import Grid from "@mui/material/Grid";
 
 interface FromProps {
   selectedCurr: any;
@@ -21,8 +21,8 @@ const From = ({
   sortedCurrencies,
 }: FromProps) => {
   return (
-    <section className={styles.fromContainer}>
-      <div className={styles.fromMenu}>
+    <Grid container spacing={10} alignItems="center" justifyContent="center">
+      <Grid item xs={12}>
         <Dropdown
           fontColor="#ffb703"
           invFontColor="#023047"
@@ -31,15 +31,15 @@ const From = ({
           selectedCurrency={selectedCurr}
           onCurrencyChange={setSelectedCurr}
         ></Dropdown>
-      </div>
-      <div className={styles.fromInputBox}>
+      </Grid>
+      <Grid item xs={12}>
         <Inputbox
           fontColor="#ffb703"
           inputAmount={inputAmount}
           setInputAmount={setInputAmount}
         />
-      </div>
-    </section>
+      </Grid>
+    </Grid>
   );
 };
 
