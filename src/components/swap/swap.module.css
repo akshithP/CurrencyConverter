@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 50%; 
-  left: 50%; 
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
@@ -23,6 +23,18 @@
   color: #023047;
   height: 112px;
   width: 100px;
+}
+
+/* Styles for screens smaller than 600px (below 'sm' breakpoint) */
+@media (max-width: 599px) {
+  .swapBtn svg {
+    height: 72px;
+    width: 60px;
+  }
+  .blueBackground {
+    height: 92px;
+    width: 88px;
+  }
 }
 
 .blueBackground {
