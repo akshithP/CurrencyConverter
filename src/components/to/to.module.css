@@ -17,32 +17,45 @@
   font-size: 80px;
   text-align: center;
   color: #023047;
-  font-family: 'Abel', sans-serif;
+  font-family: "Abel", sans-serif;
+}
+
+/* Styles for screens smaller than 600px (below 'sm' breakpoint) */
+@media (max-width: 599px) {
+  .resultBox {
+    font-size: 50px;
+  }
 }
 
 /**----------------------------------LOADER------------------------------ **/
 .loader {
   transform: translateZ(1px);
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
 }
 .loader:after {
   content: "$";
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  font-size: 60px;
   width: 90px;
   height: 90px;
   border-radius: 50%;
   text-align: center;
   line-height: 40px;
-  font-size: 60px;
+  font-size: 32px;
   font-weight: bold;
-  background: #236119;
+  background: #096730;
   color: #daa520;
   border: 4px double;
   box-sizing: border-box;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   animation: coin-flip 4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
+
 @keyframes coin-flip {
   0%,
   100% {

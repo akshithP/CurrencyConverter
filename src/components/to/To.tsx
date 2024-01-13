@@ -4,6 +4,7 @@ import { Currency } from "@/types";
 import Dropdown from "../dropdown/Dropdown";
 import styles from "./to.module.css";
 import { Abel } from "next/font/google";
+import Grid from "@mui/material/Grid";
 
 const abel = Abel({
   weight: "400",
@@ -30,8 +31,8 @@ const To = ({
   setLoading,
 }: ToProps) => {
   return (
-    <section className={styles.toContainer}>
-      <div className={styles.toMenu}>
+    <Grid container spacing={5} alignItems="center" justifyContent="center">
+      <Grid item xs={12}>
         <Dropdown
           fontColor="#023047"
           invFontColor="#ffb703"
@@ -40,13 +41,17 @@ const To = ({
           selectedCurrency={selectedCurr}
           onCurrencyChange={setSelectedCurr}
         ></Dropdown>
-      </div>
-      {loading ? (
-        <p className={styles.loader}></p>
-      ) : (
-        <p className={`${styles.resultBox} ${abel.className}`}>{inputAmount}</p>
-      )}
-    </section>
+      </Grid>
+      <Grid item xs={12}>
+        {loading ? (
+          <p className={styles.loader}></p>
+        ) : (
+          <p className={`${styles.resultBox} ${abel.className}`}>
+            {inputAmount}
+          </p>
+        )}
+      </Grid>
+    </Grid>
   );
 };
 

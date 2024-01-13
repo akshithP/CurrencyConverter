@@ -56,7 +56,7 @@ const Main = ({ sortedCurrencies }: MainProps) => {
   }, [fromCurr, fromAmount, toCurr]);
 
   return (
-    <Grid container spacing={5} alignItems="center" justifyContent="center">
+    <Grid container spacing={13} alignItems="center" justifyContent="center">
       <Grid item xs={12}>
         <From
           selectedCurr={fromCurr}
@@ -74,25 +74,18 @@ const Main = ({ sortedCurrencies }: MainProps) => {
           setToCurr={setToCurr}
         ></Swap>
       </Grid>
+      <Grid item xs={12}>
+        <To
+          selectedCurr={toCurr}
+          setSelectedCurr={setToCurr}
+          inputAmount={toAmount}
+          setInputAmount={setToAmount}
+          sortedCurrencies={sortedCurrencies}
+          loading={loading}
+          setLoading={setLoading}
+        ></To>
+      </Grid>
     </Grid>
-
-    // <>
-
-    /* <Swap
-        fromCurr={fromCurr}
-        setFromCurr={setFromCurr}
-        toCurr={toCurr}
-        setToCurr={setToCurr}
-      ></Swap>
-      <To
-        selectedCurr={toCurr}
-        setSelectedCurr={setToCurr}
-        inputAmount={toAmount}
-        setInputAmount={setToAmount}
-        sortedCurrencies={sortedCurrencies}
-        loading={loading}
-        setLoading={setLoading}
-      ></To> */
   );
 };
 

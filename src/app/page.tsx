@@ -36,13 +36,5 @@ export default async function Home() {
         </Grid>
       </Grid>
     </Container>
-    // <div className={styles.mainContainer}>
-    //   <div className={styles.titleContainer}>
-    //     <h1 className={`${poppins.className} ${styles.title}`}>
-    //       Currency Converter
-    //     </h1>
-    //   </div>
-    //
-    // </div>
   );
 }

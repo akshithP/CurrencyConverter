@@ -7,8 +7,8 @@
 .inputBox {
   background-color: transparent;
   border: none;
-  padding: 12px;
-  font-size: 60px;
+  padding: 16px;
+  font-size: 80px;
   flex: 1;
   text-align: center;
   color: #ffb703;
@@ -24,7 +24,7 @@
 /* Styles for screens smaller than 600px (below 'sm' breakpoint) */
 @media (max-width: 599px) {
   .inputBox {
-    font-size: 40px;
+    font-size: 50px;
   }
 }
 
