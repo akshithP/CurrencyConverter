@@ -23,9 +23,17 @@
   top: 54%;
   height: 10px;
 }
-
+/**-------------------TITLE------------------------**/
 .title {
+  text-align: center;
   color: #ffb703;
+}
+
+/* Styles for screens smaller than 600px (below 'sm' breakpoint) */
+@media (max-width: 599px) {
+  .title {
+    font-size: 22px; /* Smaller font size for smaller screens */
+  }
 }
 
 .fromMenu {

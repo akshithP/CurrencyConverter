@@ -15,17 +15,17 @@ const convertCurrencies = async ({
   const options: RequestInit = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "0e44672082msh03a40182f751cf6p17fa5cjsn5351e23bcdcc",
+      "X-RapidAPI-Key": process.env.API_KEY,
       "X-RapidAPI-Host": "currency-converter5.p.rapidapi.com",
     } as HeadersInit,
   };
 
   try {
-    function timeout(delay: number) {
-      return new Promise((res) => setTimeout(res, delay));
-    }
+    // function timeout(delay: number) {
+    //   return new Promise((res) => setTimeout(res, delay));
+    // }
 
-    await timeout(1000);
+    // await timeout(1000);
     const response = await fetch(url, options);
     const result = await response.json();
     console.log(result);

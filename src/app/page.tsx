@@ -1,8 +1,11 @@
 import React from "react";
-import Main from "@/components/main/main";
 import { Poppins } from "next/font/google";
 import styles from "./page.module.css";
+import Main from "@/components/main/main";
 import getCurrencies from "@/api/getCurrencies";
+import { Container } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "500" });
 
@@ -21,13 +24,17 @@ export default async function Home() {
   );
 
   return (
-    <div className={styles.mainContainer}>
-      <div className={styles.titleContainer}>
-        <h1 className={`${poppins.className} ${styles.title}`}>
-          Currency Converter
-        </h1>
-      </div>
-      <Main sortedCurrencies={convertedArray}></Main>
-    </div>
+    <Container>
+      <Grid container alignItems="center" justifyContent="center">
+        <Grid item xs={12}>
+          <h1 className={`${poppins.className} ${styles.title}`}>
+            Currency Converter
+          </h1>
+        </Grid>
+        <Grid item xs={12}>
+          <Main sortedCurrencies={convertedArray}></Main>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }

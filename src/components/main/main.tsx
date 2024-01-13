@@ -5,6 +5,8 @@ import From from "../from/From";
 import To from "../to/To";
 import convertCurrencies from "@/api/convertCurrencies";
 import Swap from "../swap/Swap";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material";
 
 interface MainProps {
   sortedCurrencies: Currency[]; // Array of the available currencies
@@ -54,30 +56,36 @@ const Main = ({ sortedCurrencies }: MainProps) => {
   }, [fromCurr, fromAmount, toCurr]);
 
   return (
-    <>
-      <From
-        selectedCurr={fromCurr}
-        setSelectedCurr={setFromCurr}
-        inputAmount={fromAmount}
-        setInputAmount={setFromAmount}
-        sortedCurrencies={sortedCurrencies}
-      ></From>
-      <Swap
-        fromCurr={fromCurr}
-        setFromCurr={setFromCurr}
-        toCurr={toCurr}
-        setToCurr={setToCurr}
-      ></Swap>
-      <To
-        selectedCurr={toCurr}
-        setSelectedCurr={setToCurr}
-        inputAmount={toAmount}
-        setInputAmount={setToAmount}
-        sortedCurrencies={sortedCurrencies}
-        loading={loading}
-        setLoading={setLoading}
-      ></To>
-    </>
+    <Grid container spacing={13} alignItems="center" justifyContent="center">
+      <Grid item xs={12}>
+        <From
+          selectedCurr={fromCurr}
+          setSelectedCurr={setFromCurr}
+          inputAmount={fromAmount}
+          setInputAmount={setFromAmount}
+          sortedCurrencies={sortedCurrencies}
+        ></From>
+      </Grid>
+      <Grid item xs={12}>
+        <Swap
+          fromCurr={fromCurr}
+          setFromCurr={setFromCurr}
+          toCurr={toCurr}
+          setToCurr={setToCurr}
+        ></Swap>
+      </Grid>
+      <Grid item xs={12}>
+        <To
+          selectedCurr={toCurr}
+          setSelectedCurr={setToCurr}
+          inputAmount={toAmount}
+          setInputAmount={setToAmount}
+          sortedCurrencies={sortedCurrencies}
+          loading={loading}
+          setLoading={setLoading}
+        ></To>
+      </Grid>
+    </Grid>
   );
 };
 

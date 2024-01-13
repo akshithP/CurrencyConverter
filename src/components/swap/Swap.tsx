@@ -2,7 +2,6 @@
 import React from "react";
 import styles from "./swap.module.css";
 import { AiOutlineSwap } from "react-icons/ai";
-import { TbCircleFilled } from "react-icons/tb";
 import { Currency } from "@/types";
 
 interface SwapProps {

@@ -27,6 +27,7 @@ const Dropdown = ({
   onCurrencyChange,
 }: DropdownProps) => {
   // Creating custom styles for the autoplete MUI components
+  const basicTheme = createTheme();
   const theme = createTheme({
     components: {
       // Changing the color of the dropwdown icon
@@ -42,7 +43,10 @@ const Dropdown = ({
         styleOverrides: {
           root: {
             color: fontColor,
-            fontSize: 20,
+            fontSize: 18,
+            [basicTheme.breakpoints.up("sm")]: {
+              fontSize: 22, // Font size for screens wider than 600px
+            },
           },
         },
       },
@@ -80,34 +84,34 @@ const Dropdown = ({
     getOptionLabel: (option: Currency) => `${option.code} - ${option.desc}`,
   };
 
-  // // UseState to
-  // const [selectedCurr, setSelectedCurr] = React.useState<Currency | null>({
-  //   code: "AUD",
-  //   desc: "Australian Dollar",
-  // });
-
   return (
     <ThemeProvider theme={theme}>
-      <section className={styles.mainContainer}>
-        <Stack spacing={2} sx={{ margin: "auto" }} width="250px">
-          <Autocomplete
-            {...defaultProps}
-            className={styles.autocomplete}
-            id="disable-close-on-select"
-            value={selectedCurrency}
-            onChange={(event: any, newCurr: Currency | null) => {
-              // setSelectedCurr(newCurr);
-              onCurrencyChange(newCurr)
-              console.log(newCurr)
-            }}
-            disableCloseOnSelect
-            renderInput={(params) => (
-              <TextField {...params} label={menuLabel} variant="standard" />
-            )}
-            autoSelect={true}
-          />
-        </Stack>
-      </section>
+      <Stack
+        spacing={2}
+        sx={{
+          margin: "auto",
+          width: {
+            xs: "210px", // Full width on extra-small devices
+            sm: "320px", // 320px width on small devices and up
+          },
+        }}
+      >
+        <Autocomplete
+          {...defaultProps}
+          className={styles.autocomplete}
+          id="disable-close-on-select"
+          value={selectedCurrency}
+          onChange={(event: any, newCurr: Currency | null) => {
+            onCurrencyChange(newCurr);
+            console.log(newCurr);
+          }}
+          disableCloseOnSelect
+          renderInput={(params) => (
+            <TextField {...params} label={menuLabel} variant="standard" />
+          )}
+          autoSelect={true}
+        />
+      </Stack>
     </ThemeProvider>
   );
 };
