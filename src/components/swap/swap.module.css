@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 
 .swapBtn {
@@ -31,10 +31,14 @@
   border-radius: 50%;
   height: 132px;
   width: 128px;
-  /* display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; */
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Styles for screens smaller than 600px (below 'sm' breakpoint) */
@@ -57,6 +61,7 @@
 
 .swapBtn:hover {
   background-color: black;
+  cursor: pointer;
 }
 
 .swapBtn:hover,
